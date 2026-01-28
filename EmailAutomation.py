@@ -71,25 +71,4 @@ class JobApplicationSender:
       
         self.settings_file = os.path.join(app_data_dir, "job_app_settings.json")
         self.history_file = os.path.join(app_data_dir, "sent_history.csv")
-        self.drafts_file = os.path.join(app_data_dir, "email_drafts.json")
-        self.recipients_file = os.path.join(app_data_dir, "recipients_data.json") 
-        
-        # Connection status
-        self.connection_status_var = None
-        self.connection_status_label = None
-        
-        self.initialize_variables()
-        
-        # Create GUI
-        self.create_widgets()
-        
-        # Now load settings AFTER widgets are created
-        self.load_settings()
-        self.load_drafts()
-        self.load_recipients_data()  # NEW: Load saved recipients
-        self.load_history()  # NEW: Load history immediately
-        
-        # Start scheduler thread
-        self.scheduler_running = True
-        self.scheduler_thread = threading.Thread(target=self.run_scheduler, daemon=True)
-        self.scheduler_thread.start()
+
