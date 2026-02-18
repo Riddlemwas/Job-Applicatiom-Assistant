@@ -11,58 +11,47 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     }
 
     body {
-      background-color: #000000;  /* pure dark */
-      color: #e0ffe0;             /* soft greenish white */
+      background-color: #0b0f0b;
+      color: #e0f0e0;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
 
-    /* enhanced neon glow */
-    ::selection {
-      background: #00ff99;
-      color: #000;
-      text-shadow: 0 0 8px #00ff99;
-    }
-
-    /* custom scrollbar with neon */
+    /* modern, subtle scrollbar */
     ::-webkit-scrollbar {
-      width: 10px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #0a0a0a;
-      box-shadow: inset 0 0 5px #00cc66;
+      background: #1a251a;
     }
     ::-webkit-scrollbar-thumb {
-      background: #00ff99;
-      border-radius: 6px;
-      box-shadow: 0 0 15px #00ff99;
+      background: #3b6e3b;
+      border-radius: 4px;
     }
 
     h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
     h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 2rem;
-      color: #b3ffb3;
-      border-left: 6px solid #00ff99;
+      color: #d0ffd0;
+      border-left: 5px solid #4caf4c;
       padding-left: 1.5rem;
-      text-shadow: 0 0 8px #00ff99;
     }
 
     a {
       text-decoration: none;
-      color: #b3ffb3;
-      transition: all 0.2s ease;
+      color: #b0f0b0;
+      transition: 0.2s;
     }
     a:hover {
       color: #ffffff;
-      text-shadow: 0 0 12px #00ff99, 0 0 25px #00cc66;
     }
 
     .container {
@@ -71,15 +60,15 @@
       padding: 0 2rem;
     }
 
-    /* header with logo image + neon */
+    /* header with glass effect */
     header {
-      background: #0d0d0d;
+      background: rgba(10, 20, 10, 0.8);
+      backdrop-filter: blur(10px);
       padding: 1rem 0;
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid #00ff99;
-      box-shadow: 0 0 20px #00ff99, 0 4px 30px rgba(0,255,150,0.3);
+      border-bottom: 1px solid #2a4a2a;
     }
 
     .header-content {
@@ -89,174 +78,169 @@
     }
 
     .logo img {
-      height: 55px;
+      height: 50px;
       width: auto;
-      filter: drop-shadow(0 0 8px #00ff99);
-      transition: filter 0.3s;
-    }
-    .logo img:hover {
-      filter: drop-shadow(0 0 15px #00ff99) drop-shadow(0 0 30px #00cc66);
+      filter: drop-shadow(0 0 5px #4caf4c);
     }
 
     nav ul {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
     }
     nav a {
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
     }
     nav a:hover {
-      border-bottom-color: #00ff99;
-      text-shadow: 0 0 10px #00ff99;
+      border-bottom-color: #4caf4c;
     }
 
-    /* buttons with intense neon */
+    /* buttons */
     .btn {
       display: inline-block;
       background: transparent;
-      border: 2px solid #00ff99;
-      color: #00ff99;
-      padding: 0.9rem 2.2rem;
+      border: 2px solid #4caf4c;
+      color: #d0ffd0;
+      padding: 0.8rem 2rem;
       font-weight: 600;
-      border-radius: 50px;
+      border-radius: 40px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-      box-shadow: 0 0 15px #00ff99, inset 0 0 5px #00ff99;
-      text-shadow: 0 0 5px #00ff99;
+      transition: 0.3s;
+      font-size: 1rem;
     }
     .btn:hover {
-      background: #00ff99;
-      color: #000000;
-      box-shadow: 0 0 30px #00ff99, 0 0 60px #00cc66;
-      transform: scale(1.05);
-      border-color: #ffffff;
+      background: #4caf4c;
+      color: #0b0f0b;
+      box-shadow: 0 0 15px #4caf4c;
     }
     .btn-download {
-      background: #00ff99;
-      color: #000;
+      background: #4caf4c;
+      color: #0b0f0b;
       border: none;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       padding: 1rem 3rem;
-      box-shadow: 0 0 30px #00ff99, 0 0 60px #00cc66;
-      animation: pulse-glow 2s infinite;
-    }
-    @keyframes pulse-glow {
-      0% { box-shadow: 0 0 20px #00ff99; }
-      50% { box-shadow: 0 0 50px #00ff99, 0 0 80px #00cc66; }
-      100% { box-shadow: 0 0 20px #00ff99; }
+      box-shadow: 0 0 20px #4caf4c;
     }
 
-    /* hero */
+    /* hero section with app screenshot background */
     .hero {
-      min-height: 85vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
-      background: radial-gradient(circle at 30% 50%, #0f2b0f, #000000 80%);
+      position: relative;
+      background: radial-gradient(circle at 70% 30%, #1f3a1f, #020502 70%);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-image: url('app-screenshot.png'); /* replace with actual screenshot */
+      background-size: 60% auto;
+      background-repeat: no-repeat;
+      background-position: 110% center;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
     }
     .hero-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
-      align-items: center;
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
     }
     .hero h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      background: linear-gradient(to right, #ccffcc, #66ff99);
+      font-size: 3.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #c0ffc0, #90ee90);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1.5rem;
-      text-shadow: 0 0 15px #00ff99;
+      line-height: 1.2;
     }
     .hero p {
       font-size: 1.3rem;
-      color: #b3ffb3;
+      color: #c0e0c0;
       margin-bottom: 2rem;
-      opacity: 0.9;
     }
     .hero-badge {
       display: flex;
       gap: 2rem;
-      margin-top: 2rem;
-      color: #90ee90;
+      margin: 2rem 0;
+      color: #a0d0a0;
     }
     .hero-badge i {
-      color: #00ff99;
+      color: #4caf4c;
       margin-right: 0.5rem;
-      filter: drop-shadow(0 0 5px #00ff99);
-    }
-    .hero-image {
-      background: #1a1f1a;
-      border-radius: 30px;
-      padding: 2rem;
-      border: 2px solid #00ff99;
-      box-shadow: 0 0 30px #00ff99, inset 0 0 10px #00ff99;
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); box-shadow: 0 0 50px #00ff99; }
-      100% { transform: translateY(0px); }
     }
 
-    /* features with neon cards */
+    /* features grid */
     .features {
       padding: 5rem 0;
-      background: #030703;
+      background: #0a120a;
     }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
     .feature-card {
-      background: #111b11;
-      border: 2px solid #2a472a;
+      background: #1a251a;
+      border: 1px solid #2e4a2e;
       border-radius: 24px;
       padding: 2rem 1.5rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px #00cc66;
+      transition: 0.3s;
     }
     .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: #00ff99;
-      box-shadow: 0 0 40px #00ff99, 0 0 80px #00cc66;
+      border-color: #6f9e6f;
+      box-shadow: 0 10px 30px rgba(76, 175, 76, 0.2);
+      transform: translateY(-5px);
     }
     .feature-icon {
-      font-size: 2.5rem;
-      color: #00ff99;
+      font-size: 2.2rem;
+      color: #4caf4c;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 8px #00ff99);
     }
     .feature-card h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 0.8rem;
+    }
+    .feature-card p {
+      color: #b0d0b0;
     }
 
     /* how-to steps */
+    .howto {
+      padding: 5rem 0;
+    }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      counter-reset: step;
+    }
     .step {
       flex: 1 1 200px;
-      background: #0f1a0f;
+      background: #1a251a;
       border-radius: 30px;
       padding: 2rem;
       text-align: center;
-      border: 2px solid #2b532b;
+      border: 1px solid #2e4a2e;
       position: relative;
-      box-shadow: 0 0 15px #00cc66;
     }
     .step::before {
       content: counter(step);
+      counter-increment: step;
       position: absolute;
       top: -15px;
       left: 50%;
       transform: translateX(-50%);
-      background: #00ff99;
+      background: #4caf4c;
       color: black;
       font-weight: bold;
       width: 40px;
@@ -266,129 +250,135 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
-      border: 3px solid #000;
-      box-shadow: 0 0 15px #00ff99;
+      border: 3px solid #0b0f0b;
     }
     .step i {
       font-size: 2.5rem;
-      color: #00ff99;
+      color: #4caf4c;
       margin: 1rem 0;
-      filter: drop-shadow(0 0 8px #00ff99);
     }
 
     /* download section */
+    .download {
+      padding: 5rem 0;
+      background: #0a120a;
+      text-align: center;
+    }
     .download-card {
-      background: #112211;
+      background: #1a251a;
       padding: 2.5rem 3rem;
       border-radius: 32px;
-      border: 2px solid #3c6e3c;
-      box-shadow: 0 0 25px #00cc66;
-      transition: 0.3s;
+      border: 1px solid #3e6e3e;
+      display: inline-block;
     }
-    .download-card:hover {
-      border-color: #00ff99;
-      box-shadow: 0 0 50px #00ff99;
-    }
-
-    /* footer with logo watermark */
-    footer {
-      padding: 3rem 2rem;
-      text-align: center;
-      color: #4f8a4f;
-      border-top: 2px solid #00ff99;
-      box-shadow: 0 -5px 30px #00ff99;
-      position: relative;
-      overflow: hidden;
-    }
-    footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('riddletech-logo.jpg'); /* same logo */
-      background-repeat: repeat;
-      background-size: 150px auto;
-      opacity: 0.05;
-      pointer-events: none;
-      z-index: 0;
-    }
-    footer > * {
-      position: relative;
-      z-index: 1;
+    .github-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #b0f0b0;
+      border-bottom: 1px dashed #4caf4c;
     }
 
     /* developer card */
+    .developer {
+      padding: 5rem 0;
+    }
     .dev-card {
-      background: #0d1a0d;
+      background: #1a251a;
       border-radius: 40px;
       padding: 3rem;
-      border: 2px solid #2d5a2d;
-      box-shadow: 0 0 25px #00cc66;
+      border: 1px solid #3e6e3e;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+    .dev-info h3 {
+      font-size: 2rem;
+    }
+    .dev-social {
+      display: flex;
+      gap: 1.2rem;
+      margin: 2rem 0;
     }
     .social-icon {
-      background: #1c2c1c;
-      width: 55px;
-      height: 55px;
+      background: #2a3a2a;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      color: #00ff99;
-      border: 2px solid #2f9f2f;
-      box-shadow: 0 0 10px #00ff99;
-      transition: 0.3s;
+      font-size: 1.6rem;
+      color: #4caf4c;
+      border: 1px solid #4caf4c;
+      transition: 0.2s;
     }
     .social-icon:hover {
-      background: #00ff99;
+      background: #4caf4c;
       color: black;
-      border-color: #fff;
-      transform: scale(1.1) rotate(8deg);
-      box-shadow: 0 0 30px #00ff99;
+    }
+    .contact-email {
+      background: #2a3a2a;
+      padding: 1.5rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      border: 1px solid #4caf4c;
     }
 
     /* privacy */
+    .privacy {
+      padding: 3rem 0;
+      background: #0a120a;
+    }
     .privacy-content {
       max-width: 900px;
       margin: 0 auto;
-      background: #0f1b0f;
+      background: #1a251a;
       padding: 2.5rem;
       border-radius: 30px;
-      border: 2px solid #2a5a2a;
-      box-shadow: 0 0 20px #00cc66;
+      border: 1px solid #3e6e3e;
     }
 
-    /* fade in */
+    /* footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: #6f8f6f;
+      border-top: 1px solid #2e4a2e;
+    }
+
+    /* fade-in */
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* mobile */
     @media (max-width: 900px) {
       .hero-content {
-        grid-template-columns: 1fr;
+        max-width: 100%;
         text-align: center;
       }
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      .hero-badge {
-        justify-content: center;
+      .hero::after {
+        opacity: 0.05;
+        background-size: 90% auto;
+        background-position: center;
       }
       .header-content {
         flex-direction: column;
         gap: 1rem;
       }
-      .logo img {
-        height: 45px;
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      h2 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -397,7 +387,6 @@
   <header>
     <div class="container header-content">
       <div class="logo">
-        <!-- Replace with your logo file name (e.g., riddletech-logo.jpg) -->
         <img src="riddletech-logo.jpg" alt="RIDDLETeCH">
       </div>
       <nav>
@@ -413,79 +402,63 @@
   </header>
 
   <main>
-    <!-- HERO / HOME -->
+    <!-- HERO with app screenshot as background watermark -->
     <section id="home" class="hero">
-      <div class="container hero-content">
-        <div class="fade-in">
-          <h1>Job Application Assistant</h1>
-          <p>Automate your job applications with AI‑powered personalisation, scheduling, and secure credential storage.  
-          <br><span style="color:#00ff99;">Official subdomain: </span><strong>jobapplicationassistant.riddletech.co.ke</strong></p>
-          <div class="hero-badge">
-            <span><i class="fas fa-check-circle"></i> Multi‑provider AI</span>
-            <span><i class="fas fa-check-circle"></i> Windows Credential Manager</span>
-            <span><i class="fas fa-check-circle"></i> Resume Generator</span>
-          </div>
-          <a href="#download" class="btn btn-download" style="margin-top: 2rem;"><i class="fas fa-download"></i> Download .exe</a>
+      <div class="container hero-content fade-in">
+        <h1>Job Application Assistant</h1>
+        <p>Intelligent automation for your job search — AI‑powered, secure, and completely under your control.  
+        <br><span style="color:#8bc34a;">jobapplicationassistant.riddletech.co.ke</span></p>
+        <div class="hero-badge">
+          <span><i class="fas fa-microchip"></i> Multi‑provider AI</span>
+          <span><i class="fas fa-shield-alt"></i> Windows Vault</span>
+          <span><i class="fas fa-file-alt"></i> Resume generator</span>
         </div>
-        <div class="hero-image fade-in">
-          <pre style="color:#b3ffb3; font-size:0.9rem; line-height:1.4;">
-╔══════════════════════════════╗
-║   📧 Job Application Suite   ║
-╠══════════════════════════════╣
-║ • Recipients management      ║
-║ • AI cover letter generator  ║
-║ • Attach resumes & letters   ║
-║ • Scheduled sending          ║
-║ • Real OpenAI / DeepSeek     ║
-║ • Gmail integration          ║
-╚══════════════════════════════╝
-          </pre>
-        </div>
+        <a href="#download" class="btn btn-download"><i class="fas fa-download"></i> Download .exe</a>
       </div>
     </section>
 
-    <!-- FEATURES (extracted from Python code) -->
+    <!-- FEATURES extracted from Python code -->
     <section id="features" class="features">
       <div class="container">
-        <h2 class="fade-in">⚡ Powerful Features</h2>
+        <h2 class="fade-in">Core Capabilities</h2>
         <div class="features-grid">
           <div class="feature-card fade-in">
-            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <div class="feature-icon"><i class="fas fa-address-book"></i></div>
             <h3>Recipient Manager</h3>
-            <p>Store companies, HR names, emails, positions. Select recipients with checkboxes. Import/export CSV.</p>
+            <p>Store companies, HR names, emails, positions. Select with checkboxes, import/export CSV, track send counts.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-envelope-open-text"></i></div>
-            <h3>Email Templates</h3>
-            <p>Use dynamic tags like {company}, {hr_name}, {position}. Preview before sending.</p>
+            <h3>Dynamic Templates</h3>
+            <p>Tags like {company}, {hr_name}, {position}. Preview and save drafts. Supports rich text.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-paperclip"></i></div>
-            <h3>Attachments</h3>
-            <p>Attach PDF, DOCX, TXT. Auto‑deduplicate. Preview files inside the app.</p>
+            <h3>Smart Attachments</h3>
+            <p>Attach PDF, DOCX, TXT. Deduplication, file preview, and per‑recipient attachment sets.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-clock"></i></div>
-            <h3>Smart Scheduling</h3>
-            <p>Set resend intervals (1‑7 days) and max resends. Stop resend per recipient anytime.</p>
+            <h3>Scheduling & Resends</h3>
+            <p>Set interval (1‑7 days) and max resends (1‑7). Stop resend per recipient anytime.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-robot"></i></div>
             <h3>AI Assistant (Real)</h3>
-            <p>Connect to OpenAI, DeepSeek, HuggingFace or custom endpoints. Generate resumes & cover letters.</p>
+            <p>OpenAI, DeepSeek, HuggingFace, or custom endpoints. Generate cover letters, resumes, emails.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-lock"></i></div>
             <h3>Secure Credentials</h3>
-            <p>Passwords stored in Windows Credential Manager, never in plain files. App passwords for Gmail.</p>
+            <p>Passwords stored in Windows Credential Manager, never in plain files. Gmail OAuth support.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-icon"><i class="fas fa-history"></i></div>
             <h3>Full History & Logs</h3>
-            <p>Track sent emails, failures, resends. Export history to CSV.</p>
+            <p>Sent emails, failures, resends. Export to CSV, real‑time activity log.</p>
           </div>
           <div class="feature-card fade-in">
-            <div class="feature-icon"><i class="fas fa-gem"></i></div>
+            <div class="feature-icon"><i class="fas fa-envelope"></i></div>
             <h3>Gmail Integration</h3>
             <p>Scan job alert emails, parse job details, auto‑generate drafts with AI.</p>
           </div>
@@ -493,35 +466,35 @@
       </div>
     </section>
 
-    <!-- HOW TO USE (simple steps from the UI) -->
+    <!-- HOW TO USE (based on UI workflow) -->
     <section id="howto" class="howto">
       <div class="container">
-        <h2 class="fade-in">📘 How to Use</h2>
+        <h2 class="fade-in">Workflow</h2>
         <div class="steps">
           <div class="step fade-in">
             <i class="fas fa-cog"></i>
-            <h3>1. Configure</h3>
-            <p>Enter your email & app password (Gmail). Save securely to Windows Credential Manager.</p>
+            <h3>Configure</h3>
+            <p>Enter email & app password. Save to Windows Credential Manager.</p>
           </div>
           <div class="step fade-in">
-            <i class="fas fa-address-book"></i>
-            <h3>2. Add Recipients</h3>
-            <p>Add companies, HR names, emails. Tick checkboxes to select them for sending.</p>
+            <i class="fas fa-users"></i>
+            <h3>Add Recipients</h3>
+            <p>Fill company, HR name, email. Tick to select.</p>
           </div>
           <div class="step fade-in">
             <i class="fas fa-edit"></i>
-            <h3>3. Write Template</h3>
-            <p>Use tags like {company} in subject/body. Preview with sample data.</p>
+            <h3>Compose Template</h3>
+            <p>Use dynamic tags, preview with sample data.</p>
           </div>
           <div class="step fade-in">
             <i class="fas fa-paperclip"></i>
-            <h3>4. Attach Files</h3>
-            <p>Add resume, cover letter, etc. They will be included in every email.</p>
+            <h3>Attach Files</h3>
+            <p>Add resume, cover letter, etc.</p>
           </div>
           <div class="step fade-in">
             <i class="fas fa-paper-plane"></i>
-            <h3>5. Send / Schedule</h3>
-            <p>Send immediately or schedule recurring sending with resend limits.</p>
+            <h3>Send / Schedule</h3>
+            <p>Send immediately or schedule with resend limits.</p>
           </div>
         </div>
       </div>
@@ -530,18 +503,15 @@
     <!-- DOWNLOAD -->
     <section id="download" class="download">
       <div class="container">
-        <h2 class="fade-in">⬇️ Download Application</h2>
-        <div class="download-options">
-          <div class="download-card fade-in">
-            <i class="fas fa-file-exe" style="font-size:3rem; color:#00ff99;"></i>
-            <h3>JobApplicationAssistant V1.1.0</h3>
-            <p class="version">Windows executable (64-bit)</p>
-            <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/download/JobApplicationAssistant/JobApplicationAssistant_V1.1.0.exe" class="btn" style="margin-top:1rem;"><i class="fas fa-download"></i> Direct Download</a>
-            <br>
-            <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/tag/JobApplicationAssistant" class="github-link" target="_blank"><i class="fab fa-github"></i> GitHub Release</a>
-          </div>
+        <h2 class="fade-in">Get the Application</h2>
+        <div class="download-card fade-in">
+          <i class="fas fa-file-exe" style="font-size:3rem; color:#8bc34a;"></i>
+          <h3 style="margin:1rem 0;">JobApplicationAssistant V1.1.0</h3>
+          <p>Windows 10/11 (64-bit) · Portable</p>
+          <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/download/JobApplicationAssistant/JobApplicationAssistant_V1.1.0.exe" class="btn btn-download" style="margin-top:1.5rem;"><i class="fas fa-download"></i> Direct Download</a>
+          <br>
+          <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/tag/JobApplicationAssistant" class="github-link" target="_blank"><i class="fab fa-github"></i> GitHub Release</a>
         </div>
-        <p style="margin-top:2rem; color:#90ee90;">Open source · No installation required (portable)</p>
       </div>
     </section>
 
@@ -551,7 +521,7 @@
         <div class="dev-card fade-in">
           <div class="dev-info">
             <h3>👨‍💻 Developer</h3>
-            <p style="font-size:1.3rem; color:#b3ffb3;">RiDDL3TeCH (EPHANTUS MWAURA – KENYA)</p>
+            <p style="font-size:1.3rem; color:#b0e0b0;">RiDDL3TeCH (EPHANTUS MWAURA – KENYA)</p>
             <div class="dev-social">
               <a href="https://wa.me/+254743156789?text=Hello%20from%20Job%20Application%20Assistant" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
               <a href="https://www.facebook.com/riddletech104" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -561,50 +531,46 @@
             <div class="contact-email">
               <i class="fas fa-envelope"></i> jobapplicationassistant@riddletech.co.ke
             </div>
-            <p style="margin-top:1rem;"><i class="fas fa-globe"></i> Subdomain: <strong>jobapplicationassistant.riddletech.co.ke</strong></p>
+            <p style="margin-top:1rem;"><i class="fas fa-globe"></i> <strong>jobapplicationassistant.riddletech.co.ke</strong></p>
           </div>
           <div style="flex:1; min-width:250px;">
-            <p style="border-left: 4px solid #00ff99; padding-left:1.5rem;">
-              <i class="fas fa-quote-left" style="color:#00cc66;"></i> Built with Python, Tkinter, and multi‑provider AI support. Real‑time generation, secure vault, and full control.
+            <p style="border-left: 4px solid #8bc34a; padding-left:1.5rem;">
+              <i class="fas fa-quote-left" style="color:#8bc34a;"></i> Built with Python, Tkinter, and multi‑provider AI. Real‑time generation, secure vault, full control.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRIVACY POLICY -->
+    <!-- PRIVACY POLICY (direct from code description) -->
     <section id="privacy" class="privacy">
       <div class="container">
         <div class="privacy-content fade-in">
-          <h2 style="color:#00ff99;">🔐 Privacy Policy</h2>
+          <h2 style="color:#8bc34a;">🔐 Privacy & Security</h2>
           <p style="margin-top:1rem;">Your email credentials are <strong>never saved to disk</strong>. They are stored securely in <strong>Windows Credential Manager</strong> (local, encrypted).</p>
-          <p>When you use AI features (OpenAI, DeepSeek, etc.), your job descriptions and prompts are sent to the respective AI provider – we do not store them. No data leaves your PC except for AI API calls and email sending via SMTP.</p>
-          <p>Gmail integration uses OAuth 2.0 – tokens are stored locally and never shared. You can revoke access anytime from your Google account.</p>
-          <p>By using this software, you agree that you are responsible for complying with the terms of service of your email provider and AI services.</p>
-          <p style="margin-top:1.5rem;"><i class="fas fa-shield-alt" style="color:#00ff99;"></i> Full source code available on GitHub for audit.</p>
+          <p>AI prompts are sent to your chosen provider (OpenAI, DeepSeek, etc.) – we do not store them. Gmail OAuth tokens stay on your machine.</p>
+          <p>Full source code available on GitHub for transparency. By using this software, you agree to comply with your email provider's terms.</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 RiddleTech. All rights reserved. | Job Application Assistant is open source.</p>
-    <p style="margin-top:1rem;"><i class="fas fa-code-branch"></i> jobapplicationassistant.riddletech.co.ke</p>
+    <p>© 2026 RiddleTech. All rights reserved. | Open source · jobapplicationassistant.riddletech.co.ke</p>
   </footer>
 
-  <!-- simple fade-in on scroll -->
   <script>
+    // Intersection Observer for fade-in
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+    faders.forEach(f => observer.observe(f));
   </script>
 </body>
 </html>
