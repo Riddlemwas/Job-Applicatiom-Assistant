@@ -1,153 +1,610 @@
 <!DOCTYPE html>
-<html>
-<head> 
-  <meta name="google-site-verification" content="1Ezm2gKXJGVxVfQhuN_aSCIMu_0Oi0c_AZLq9ViII0k" />
-  <meta charset="UTF-8" />
-  <title>Job Application Assistant</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiddleTech · Job Application Assistant</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background-color: #000000;  /* pure dark */
+      color: #e0ffe0;             /* soft greenish white */
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* enhanced neon glow */
+    ::selection {
+      background: #00ff99;
+      color: #000;
+      text-shadow: 0 0 8px #00ff99;
+    }
+
+    /* custom scrollbar with neon */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+      box-shadow: inset 0 0 5px #00cc66;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00ff99;
+      border-radius: 6px;
+      box-shadow: 0 0 15px #00ff99;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #b3ffb3;
+      border-left: 6px solid #00ff99;
+      padding-left: 1.5rem;
+      text-shadow: 0 0 8px #00ff99;
+    }
+
+    a {
+      text-decoration: none;
+      color: #b3ffb3;
+      transition: all 0.2s ease;
+    }
+    a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 12px #00ff99, 0 0 25px #00cc66;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header with logo image + neon */
+    header {
+      background: #0d0d0d;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00ff99;
+      box-shadow: 0 0 20px #00ff99, 0 4px 30px rgba(0,255,150,0.3);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 55px;
+      width: auto;
+      filter: drop-shadow(0 0 8px #00ff99);
+      transition: filter 0.3s;
+    }
+    .logo img:hover {
+      filter: drop-shadow(0 0 15px #00ff99) drop-shadow(0 0 30px #00cc66);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    nav a {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover {
+      border-bottom-color: #00ff99;
+      text-shadow: 0 0 10px #00ff99;
+    }
+
+    /* buttons with intense neon */
+    .btn {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid #00ff99;
+      color: #00ff99;
+      padding: 0.9rem 2.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 0 15px #00ff99, inset 0 0 5px #00ff99;
+      text-shadow: 0 0 5px #00ff99;
+    }
+    .btn:hover {
+      background: #00ff99;
+      color: #000000;
+      box-shadow: 0 0 30px #00ff99, 0 0 60px #00cc66;
+      transform: scale(1.05);
+      border-color: #ffffff;
+    }
+    .btn-download {
+      background: #00ff99;
+      color: #000;
+      border: none;
+      font-size: 1.3rem;
+      padding: 1rem 3rem;
+      box-shadow: 0 0 30px #00ff99, 0 0 60px #00cc66;
+      animation: pulse-glow 2s infinite;
+    }
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 20px #00ff99; }
+      50% { box-shadow: 0 0 50px #00ff99, 0 0 80px #00cc66; }
+      100% { box-shadow: 0 0 20px #00ff99; }
+    }
+
+    /* hero */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 30% 50%, #0f2b0f, #000000 80%);
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      background: linear-gradient(to right, #ccffcc, #66ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 15px #00ff99;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #b3ffb3;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .hero-badge {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      color: #90ee90;
+    }
+    .hero-badge i {
+      color: #00ff99;
+      margin-right: 0.5rem;
+      filter: drop-shadow(0 0 5px #00ff99);
+    }
+    .hero-image {
+      background: #1a1f1a;
+      border-radius: 30px;
+      padding: 2rem;
+      border: 2px solid #00ff99;
+      box-shadow: 0 0 30px #00ff99, inset 0 0 10px #00ff99;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); box-shadow: 0 0 50px #00ff99; }
+      100% { transform: translateY(0px); }
+    }
+
+    /* features with neon cards */
+    .features {
+      padding: 5rem 0;
+      background: #030703;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      background: #111b11;
+      border: 2px solid #2a472a;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00cc66;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: #00ff99;
+      box-shadow: 0 0 40px #00ff99, 0 0 80px #00cc66;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #00ff99;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 8px #00ff99);
+    }
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* how-to steps */
+    .step {
+      flex: 1 1 200px;
+      background: #0f1a0f;
+      border-radius: 30px;
+      padding: 2rem;
+      text-align: center;
+      border: 2px solid #2b532b;
+      position: relative;
+      box-shadow: 0 0 15px #00cc66;
+    }
+    .step::before {
+      content: counter(step);
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00ff99;
+      color: black;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      border: 3px solid #000;
+      box-shadow: 0 0 15px #00ff99;
+    }
+    .step i {
+      font-size: 2.5rem;
+      color: #00ff99;
+      margin: 1rem 0;
+      filter: drop-shadow(0 0 8px #00ff99);
+    }
+
+    /* download section */
+    .download-card {
+      background: #112211;
+      padding: 2.5rem 3rem;
+      border-radius: 32px;
+      border: 2px solid #3c6e3c;
+      box-shadow: 0 0 25px #00cc66;
+      transition: 0.3s;
+    }
+    .download-card:hover {
+      border-color: #00ff99;
+      box-shadow: 0 0 50px #00ff99;
+    }
+
+    /* footer with logo watermark */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #4f8a4f;
+      border-top: 2px solid #00ff99;
+      box-shadow: 0 -5px 30px #00ff99;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('riddletech-logo.jpg'); /* same logo */
+      background-repeat: repeat;
+      background-size: 150px auto;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+    footer > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* developer card */
+    .dev-card {
+      background: #0d1a0d;
+      border-radius: 40px;
+      padding: 3rem;
+      border: 2px solid #2d5a2d;
+      box-shadow: 0 0 25px #00cc66;
+    }
+    .social-icon {
+      background: #1c2c1c;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #00ff99;
+      border: 2px solid #2f9f2f;
+      box-shadow: 0 0 10px #00ff99;
+      transition: 0.3s;
+    }
+    .social-icon:hover {
+      background: #00ff99;
+      color: black;
+      border-color: #fff;
+      transform: scale(1.1) rotate(8deg);
+      box-shadow: 0 0 30px #00ff99;
+    }
+
+    /* privacy */
+    .privacy-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #0f1b0f;
+      padding: 2.5rem;
+      border-radius: 30px;
+      border: 2px solid #2a5a2a;
+      box-shadow: 0 0 20px #00cc66;
+    }
+
+    /* fade in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* mobile */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero-badge {
+        justify-content: center;
+      }
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .logo img {
+        height: 45px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Job Application Assistant</h1>
-  <p>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <!-- Replace with your logo file name (e.g., riddletech-logo.jpg) -->
+        <img src="riddletech-logo.jpg" alt="RIDDLETeCH">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#howto">How to Use</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    
-   <meta name="google-site-verification" content="1Ezm2gKXJGVxVfQhuN_aSCIMu_0Oi0c_AZLq9ViII0k" />
-    
-    Job Application Assistant is a desktop application that helps users send
-    job application emails through their own Gmail account using Google OAuth.
-  </p>
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <div class="fade-in">
+          <h1>Job Application Assistant</h1>
+          <p>Automate your job applications with AI‑powered personalisation, scheduling, and secure credential storage.  
+          <br><span style="color:#00ff99;">Official subdomain: </span><strong>jobapplicationassistant.riddletech.co.ke</strong></p>
+          <div class="hero-badge">
+            <span><i class="fas fa-check-circle"></i> Multi‑provider AI</span>
+            <span><i class="fas fa-check-circle"></i> Windows Credential Manager</span>
+            <span><i class="fas fa-check-circle"></i> Resume Generator</span>
+          </div>
+          <a href="#download" class="btn btn-download" style="margin-top: 2rem;"><i class="fas fa-download"></i> Download .exe</a>
+        </div>
+        <div class="hero-image fade-in">
+          <pre style="color:#b3ffb3; font-size:0.9rem; line-height:1.4;">
+╔══════════════════════════════╗
+║   📧 Job Application Suite   ║
+╠══════════════════════════════╣
+║ • Recipients management      ║
+║ • AI cover letter generator  ║
+║ • Attach resumes & letters   ║
+║ • Scheduled sending          ║
+║ • Real OpenAI / DeepSeek     ║
+║ • Gmail integration          ║
+╚══════════════════════════════╝
+          </pre>
+        </div>
+      </div>
+    </section>
 
-  <p>
-    The app only sends emails explicitly initiated by the user. No data is stored
-    externally and no background emails are sent without user action.
+    <!-- FEATURES (extracted from Python code) -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="fade-in">⚡ Powerful Features</h2>
+        <div class="features-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h3>Recipient Manager</h3>
+            <p>Store companies, HR names, emails, positions. Select recipients with checkboxes. Import/export CSV.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <h3>Email Templates</h3>
+            <p>Use dynamic tags like {company}, {hr_name}, {position}. Preview before sending.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-paperclip"></i></div>
+            <h3>Attachments</h3>
+            <p>Attach PDF, DOCX, TXT. Auto‑deduplicate. Preview files inside the app.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <h3>Smart Scheduling</h3>
+            <p>Set resend intervals (1‑7 days) and max resends. Stop resend per recipient anytime.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <h3>AI Assistant (Real)</h3>
+            <p>Connect to OpenAI, DeepSeek, HuggingFace or custom endpoints. Generate resumes & cover letters.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+            <h3>Secure Credentials</h3>
+            <p>Passwords stored in Windows Credential Manager, never in plain files. App passwords for Gmail.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-history"></i></div>
+            <h3>Full History & Logs</h3>
+            <p>Track sent emails, failures, resends. Export history to CSV.</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon"><i class="fas fa-gem"></i></div>
+            <h3>Gmail Integration</h3>
+            <p>Scan job alert emails, parse job details, auto‑generate drafts with AI.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    📧 JOB APPLICATION ASSISTANT
-=============================
+    <!-- HOW TO USE (simple steps from the UI) -->
+    <section id="howto" class="howto">
+      <div class="container">
+        <h2 class="fade-in">📘 How to Use</h2>
+        <div class="steps">
+          <div class="step fade-in">
+            <i class="fas fa-cog"></i>
+            <h3>1. Configure</h3>
+            <p>Enter your email & app password (Gmail). Save securely to Windows Credential Manager.</p>
+          </div>
+          <div class="step fade-in">
+            <i class="fas fa-address-book"></i>
+            <h3>2. Add Recipients</h3>
+            <p>Add companies, HR names, emails. Tick checkboxes to select them for sending.</p>
+          </div>
+          <div class="step fade-in">
+            <i class="fas fa-edit"></i>
+            <h3>3. Write Template</h3>
+            <p>Use tags like {company} in subject/body. Preview with sample data.</p>
+          </div>
+          <div class="step fade-in">
+            <i class="fas fa-paperclip"></i>
+            <h3>4. Attach Files</h3>
+            <p>Add resume, cover letter, etc. They will be included in every email.</p>
+          </div>
+          <div class="step fade-in">
+            <i class="fas fa-paper-plane"></i>
+            <h3>5. Send / Schedule</h3>
+            <p>Send immediately or schedule recurring sending with resend limits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-Version: 1.0.0
-Developer: RiDDL3TeCH (Ephantus Mwaura - Kenya)
-Email: snaidermwaura104@gmail.com
+    <!-- DOWNLOAD -->
+    <section id="download" class="download">
+      <div class="container">
+        <h2 class="fade-in">⬇️ Download Application</h2>
+        <div class="download-options">
+          <div class="download-card fade-in">
+            <i class="fas fa-file-exe" style="font-size:3rem; color:#00ff99;"></i>
+            <h3>JobApplicationAssistant V1.1.0</h3>
+            <p class="version">Windows executable (64-bit)</p>
+            <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/download/JobApplicationAssistant/JobApplicationAssistant_V1.1.0.exe" class="btn" style="margin-top:1rem;"><i class="fas fa-download"></i> Direct Download</a>
+            <br>
+            <a href="https://github.com/Riddlemwas/Job-Applicatiom-Assistant/releases/tag/JobApplicationAssistant" class="github-link" target="_blank"><i class="fab fa-github"></i> GitHub Release</a>
+          </div>
+        </div>
+        <p style="margin-top:2rem; color:#90ee90;">Open source · No installation required (portable)</p>
+      </div>
+    </section>
 
-🚀 FEATURES:
-------------
-1. Store and manage job application recipients
-2. Create personalized email templates with tags
-3. Attach resumes and cover letters
-4. Schedule automatic email sending
-5. Track sent applications with history
-6. Test email connections before sending
-7. Import/Export recipient lists (CSV)
+    <!-- DEVELOPER & CONTACT -->
+    <section id="contact" class="developer">
+      <div class="container">
+        <div class="dev-card fade-in">
+          <div class="dev-info">
+            <h3>👨‍💻 Developer</h3>
+            <p style="font-size:1.3rem; color:#b3ffb3;">RiDDL3TeCH (EPHANTUS MWAURA – KENYA)</p>
+            <div class="dev-social">
+              <a href="https://wa.me/+254743156789?text=Hello%20from%20Job%20Application%20Assistant" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.facebook.com/riddletech104" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://github.com/Riddlemwas" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="https://instagram.com/riddl3tech" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="contact-email">
+              <i class="fas fa-envelope"></i> jobapplicationassistant@riddletech.co.ke
+            </div>
+            <p style="margin-top:1rem;"><i class="fas fa-globe"></i> Subdomain: <strong>jobapplicationassistant.riddletech.co.ke</strong></p>
+          </div>
+          <div style="flex:1; min-width:250px;">
+            <p style="border-left: 4px solid #00ff99; padding-left:1.5rem;">
+              <i class="fas fa-quote-left" style="color:#00cc66;"></i> Built with Python, Tkinter, and multi‑provider AI support. Real‑time generation, secure vault, and full control.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-📋 SYSTEM REQUIREMENTS:
------------------------
-• Windows 10/11 (64-bit)
-• Internet connection for email sending
-• Gmail account (recommended)
+    <!-- PRIVACY POLICY -->
+    <section id="privacy" class="privacy">
+      <div class="container">
+        <div class="privacy-content fade-in">
+          <h2 style="color:#00ff99;">🔐 Privacy Policy</h2>
+          <p style="margin-top:1rem;">Your email credentials are <strong>never saved to disk</strong>. They are stored securely in <strong>Windows Credential Manager</strong> (local, encrypted).</p>
+          <p>When you use AI features (OpenAI, DeepSeek, etc.), your job descriptions and prompts are sent to the respective AI provider – we do not store them. No data leaves your PC except for AI API calls and email sending via SMTP.</p>
+          <p>Gmail integration uses OAuth 2.0 – tokens are stored locally and never shared. You can revoke access anytime from your Google account.</p>
+          <p>By using this software, you agree that you are responsible for complying with the terms of service of your email provider and AI services.</p>
+          <p style="margin-top:1.5rem;"><i class="fas fa-shield-alt" style="color:#00ff99;"></i> Full source code available on GitHub for audit.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-🖥️ What You'll See
-The program opens with 7 easy tabs across the top
+  <footer>
+    <p>© 2026 RiddleTech. All rights reserved. | Job Application Assistant is open source.</p>
+    <p style="margin-top:1rem;"><i class="fas fa-code-branch"></i> jobapplicationassistant.riddletech.co.ke</p>
+  </footer>
 
-Tab 1: 📋 Recipients
-Add companies you want to apply to
-Fill in: Company name, HR contact, email, job position
-You can import contacts from Excel/CSV files
-
-Tab 2: 📝 Email Template
-Write your cover letter once
-
-Use smart tags like {company} and {position} that auto-fill
-Save different templates for different jobs
-
-Tab 3: 📎 Attachments
-Add your resume and cover letters
-Click "Add File" to attach documents
-Remove files you don't want to send
-
-Tab 4: ⚙️ Settings
-Enter your email (like Gmail, Outlook)
-Enter password (for Gmail, use "App Password" - see help below)
-Test connection to make sure it works
-
-Tab 5: 🚀 Send
-See who you're emailing
-Preview the email
-Click "Send Emails" when ready
-
-Tab 6: 📊 History
-Track what you've sent
-See who responded
-Export your history to Excel
-
-Tab 7: ℹ️ About
-Help information
-Quick tips and guides
-
-🔐 Important: Gmail Users Read This!
-You CANNOT use your regular Gmail password! Google requires a special "App Password":
-
-To Get Gmail App Password:
-Go to: https://myaccount.google.com/security
-Turn on "2-Step Verification" (if not already on)
-Go to: https://myaccount.google.com/apppasswords
-Select "Mail" → "Other" → Name it "Job App Assistant"
-Copy the 16-character password shown
-
-Use this password in the Settings tab
-📁 Where Your Data Goes
-Your information is saved in:
-
-text
-C:\Users\YOURNAME\JobApplicationAssistant\
-recipients.json - Your contact list
-settings.json - Your email settings
-history.csv - Records of sent emails
-Everything stays on your computer only.
-
-💡 Quick Tips for Beginners
-Starting Fresh:
-Go to Settings tab → Enter your email
-Get App Password (for Gmail)
-Test connection
-Add companies in Recipients tab
-Write your email template
-Add your resume
-Send!
-
-Smart Email Writing:
-Instead of: "Dear Google Hiring Manager"
-Write: "Dear {contact}"
-The program automatically fills in:
-{company} → Company name
-{contact} → HR person's name
-{position} → Job title
-{date} → Today's date
-
-Sending in Batches:
-Add 10-20 companies at once
-Write one great template
-Attach your resume
-Send to all at once
-Track responses in History tab
-
-
-
-📧 SUPPORT:
------------
-Developer: RiDDL3TeCH
-Email: snaidermwaura104@gmail.com
-GitHub: https://github.com/Riddlemwas
-Facebook: https://www.facebook.com/riddletech104
-
-⚠️ DISCLAIMER:
---------------
-This software is provided "as-is". Use at your own risk.
-
-Always test email functionality before sending to real recipients.
-  </p>
-
-  <h3>Legal</h3>
-  <ul>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="terms.html">Terms of Service</a></li>
-  </ul>
+  <!-- simple fade-in on scroll -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 </body>
 </html>
